@@ -11,20 +11,25 @@ pub mod tests;
 pub mod error;
 
 use error::RouterError;
-
+use std::collections::HashMap;
 use regex::Regex;
 
 ///
 pub struct Route<'a, V> {
     regex: &'a str,
     params: Vec<&'a str>,
-    handler: V,
+    handlers: HashMap<&'a str, V>,
+}
+
+pub struct RouteMatch<'a, V> {
+    handler: &'a V,
+    params: HashMap<&'a str, &'a str>,
 }
 
 impl<'a, V> Route<'a, V> {
     ///
-    pub fn new(regex: &'a str, params: Vec<&'a str>, handler: V) -> Self {
-        Route { regex, params, handler }
+    pub fn new(regex: &'a str, params: Vec<&'a str>, handlers: HashMap<&'a str, V>) -> Self {
+        Route { regex, params, handlers }
     }
 
     ///
@@ -38,8 +43,8 @@ impl<'a, V> Route<'a, V> {
     }
 
     ///
-    pub fn handler(&self) -> &V {
-        &self.handler
+    pub fn handlers(&self) -> &HashMap<&'a str, V> {
+        &self.handlers
     }
 }
 
@@ -53,6 +58,38 @@ impl<'a, V> Router<'a, V> {
     ///
     fn new(builder: RouterBuilder<'a, V>) -> Result<Self, RouterError> {
         unimplemented!();
+    }
+
+    /// 
+    pub fn dispatch<'b>(&'b self, method: &'b str, path: &'b str) -> Option<RouteMatch<'b, V>> {
+        let captures = self.regex.captures(&path)?;
+
+        let mut first_match: Option<usize> = None;
+        for group in 1..captures.len() {
+            if captures.get(group).is_some() {
+                first_match = Some(group);
+            }
+        }
+
+        if first_match.is_none() {
+            return None;
+        }
+
+        let route = self.routes.get(first_match.unwrap() - 1).unwrap().as_ref().unwrap();
+        let handler = route.handlers.get(method)?;
+        let mut params: HashMap<&str, &str> = HashMap::with_capacity(route.params.len());
+
+        for i in 0..route.params().len() {
+            let key = route.params().get(i).unwrap();
+            let value = captures.get(first_match.unwrap() + i + 1).unwrap();
+
+            params.insert(key, value.as_str());
+        }
+
+        Some(RouteMatch {
+            handler,
+            params,
+        })
     }
 }
 
