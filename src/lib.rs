@@ -6,6 +6,8 @@
 //! Whilst using RegexSet would've been easier to reason about, it doesn't support the retrieval of specific group
 //! matches within the sub-regexes. Thus, we wouldn't be able to support path parameters and the extraction of them.
 
+#[cfg(test)]
+pub mod tests;
 pub mod error;
 
 use error::RouterError;
