@@ -1,4 +1,4 @@
-// Copyright (c) 2021 MetricsPage [Harry Plumb]
+// Copyright (c) 2021 Harry [Majored] [hello@majored.pw]
 // MIT License (https://github.com/MetricsPage/hyper-regex-router/blob/main/LICENSE)
 
 use crate::*;

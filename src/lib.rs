@@ -1,4 +1,4 @@
-// Copyright (c) 2021 MetricsPage [Harry Plumb]
+// Copyright (c) 2021 Harry [Majored] [hello@majored.pw]
 // MIT License (https://github.com/MetricsPage/hyper-regex-router/blob/main/LICENSE)
 
 //! https://www.npopov.com/2014/02/18/Fast-request-routing-using-regular-expressions.html
@@ -114,7 +114,7 @@ pub struct RouterBuilder<'a, V> {
 }
 
 impl<'a, V> RouterBuilder<'a, V> {
-    ///
+    /// 
     pub fn new() -> Self {
         RouterBuilder { routes: Vec::new() }
     }
