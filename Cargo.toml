@@ -1,9 +1,18 @@
 [package]
-name = "fast-regex-router"
-version = "0.1.0"
+name = "regex_router"
+version = "0.1.1"
 edition = "2021"
+authors = ["Harry [hello@majored.pw]"]
+repository = "https://github.com/Majored/rs-regex-router"
+description = "An implementation of request routing via a singular grouped regex (with support for path parameter extraction)."
+readme = "README.md"
+license = "MIT"
+documentation = "https://docs.rs/regex_router/"
+homepage = "https://github.com/Majored/rs-regex-router"
+keywords = ["web", "regex", "router"]
+categories = ["web-programming"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-regex = "1.4.5"
+regex = "1.5.4"
