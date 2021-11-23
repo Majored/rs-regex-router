@@ -1,5 +1,7 @@
 # fast-regex-router
 [![GitHub license](https://img.shields.io/badge/license-MIT-007ec6)](https://github.com/MetricsPage/fast-regex-router/blob/main/LICENSE)
+[![Crates.io](https://img.shields.io/crates/v/regex_router)](https://crates.io/crates/regex_router)
+[![docs.rs](https://img.shields.io/docsrs/regex_router)](https://docs.rs/regex_router/)
 
 An implementation of request routing via a singular grouped regex (with support for path parameter extraction).
 
