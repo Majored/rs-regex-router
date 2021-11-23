@@ -114,7 +114,7 @@ pub struct RouterBuilder<'a, V> {
 }
 
 impl<'a, V> RouterBuilder<'a, V> {
-    /// 
+    ///
     pub fn new() -> Self {
         RouterBuilder { routes: Vec::new() }
     }
@@ -136,6 +136,7 @@ impl<'a, V> Default for RouterBuilder<'a, V> {
     }
 }
 
+///
 fn construct_combined_regex<V>(routes: &[Route<V>]) -> String {
     let mut combined_regex = String::new();
 
