@@ -85,7 +85,7 @@ impl<'a, V> Router<'a, V> {
         let regex = Regex::new(&combined_regex)?;
 
         while !builder.routes.is_empty() {
-            let route = builder.routes.pop().unwrap();
+            let route = builder.routes.remove(0);
             let param_len = route.params().len();
 
             routes.push(Some(route));
