@@ -1,7 +1,7 @@
 // Copyright (c) 2021 Harry [Majored] [hello@majored.pw]
 // MIT License (https://github.com/MetricsPage/hyper-regex-router/blob/main/LICENSE)
 
-use crate::*;
+use crate::{route, RouterBuilder};
 
 #[test]
 fn empty() {
@@ -12,7 +12,7 @@ fn empty() {
 #[test]
 fn singular() {
     let mut builder = RouterBuilder::<&str>::new();
-    route!(builder; r"^/test$";; "GET" => "Hello.");
+    route!(builder; r"/test";; "GET" => "Hello.");
     let router = builder.build().unwrap();
 
     assert_eq!(*router.dispatch("GET", "/test").unwrap().handler(), "Hello.");
@@ -23,7 +23,7 @@ fn singular() {
 #[test]
 fn singular_variable() {
     let mut builder = RouterBuilder::<&str>::new();
-    route!(builder; r"^/test/(.+)$"; "example"; "GET" => "Hello.");
+    route!(builder; r"/test/(.+)"; "example"; "GET" => "Hello.");
     let router = builder.build().unwrap();
 
     let r_match = router.dispatch("GET", "/test/World.").unwrap();
@@ -39,7 +39,7 @@ fn singular_variable() {
 #[test]
 fn multiple_methods() {
     let mut builder = RouterBuilder::<&str>::new();
-    route!(builder; r"^/test$";; "GET" => "Hello.", "POST" => "World.");
+    route!(builder; r"/test";; "GET" => "Hello.", "POST" => "World.");
     let router = builder.build().unwrap();
 
     assert_eq!(*router.dispatch("GET", "/test").unwrap().handler(), "Hello.");
