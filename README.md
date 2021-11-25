@@ -14,7 +14,7 @@ An implementation of request routing via a singular grouped regex (with support 
 ## Installation & Basic Usage
 ```toml
 [dependencies]
-regex_router = "1.0.0"
+regex_router = "1.0.2"
 ```
 
 An example using a unit handler type:
