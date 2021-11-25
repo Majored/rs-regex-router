@@ -18,7 +18,7 @@ regex_router = "1.0.0"
 ```
 
 An example using a unit handler type:
-```Rust
+```rust
 use regex_router::{RouterBuilder, route};
 ...
 
@@ -31,7 +31,7 @@ let router = builder.build().unwrap();
 ```
 
 An example declaring path parameters:
-```Rust
+```rust
 let mut builder = RouterBuilder::<()>::new();
 
 route!(builder; r"/example/(\d+)"; "var1"; "GET" => ());
@@ -41,7 +41,7 @@ let router = builder.build().unwrap();
 ```
 
 Dispatching against a router:
-```Rust
+```rust
 match router.dispatch("GET", "/example/500") {
   Some(route_match) => {
     // Call handler and return response.
