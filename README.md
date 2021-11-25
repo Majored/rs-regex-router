@@ -9,7 +9,7 @@ An implementation of request routing via a singular grouped regex (with support 
 - Design approach based upon [this](https://www.npopov.com/2014/02/18/Fast-request-routing-using-regular-expressions.html) article.
 - Implemented over a generic handler type allowing use with varying webserver crates.
 - Extraction of path parameters which are then mapped as key/value pairs.
-- Convenience macros for easily declaring routes and obtaining path parameter values.
+- A convenience macro for easily declaring routes.
 
 ## Installation & Basic Usage
 ```toml
@@ -52,7 +52,7 @@ match router.dispatch("GET", "/example/500") {
 };
 ```
 
-An example `hyper` implementation can be found here: TBC
+An example implementation for `hyper` can be found [here](https://github.com/Majored/rs-regex-router/blob/main/examples/hyper_sync.rs).
 
 ## Issues & Support
 Whether you're wanting to report a bug you've come across during use of this crate or are seeking general help/assistance, please utilise the [issues tracker](https://github.com/Majored/rs-regex-router/issues) and provide as much detail as possible (eg. recreation steps).
