@@ -1,10 +1,15 @@
 // Copyright (c) 2021 Harry [Majored] [hello@majored.pw]
 // MIT License (https://github.com/MetricsPage/hyper-regex-router/blob/main/LICENSE)
 
-//! https://www.npopov.com/2014/02/18/Fast-request-routing-using-regular-expressions.html
+//! # rs-regex-router
 //!
-//! Whilst using RegexSet would've been easier to reason about, it doesn't support the retrieval of specific group
-//! matches within the sub-regexes. Thus, we wouldn't be able to support path parameters and the extraction of them.
+//! ## Features
+//! - Design approach based upon [this](https://www.npopov.com/2014/02/18/Fast-request-routing-using-regular-expressions.html) article.
+//! - Implemented over a generic handler type allowing use with varying webserver crates.
+//! - Extraction of path parameters which are then mapped as key/value pairs.
+//! - A convenience macro for easily declaring routes.
+//! 
+//! [Read more.](https://github.com/Majored/rs-regex-router)
 
 pub mod error;
 #[cfg(test)]
